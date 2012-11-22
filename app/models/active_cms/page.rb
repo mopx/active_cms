@@ -10,8 +10,8 @@ module ActiveCms
     
     #has_ancestry
     acts_as_nested_set
-    
-    belongs_to :view_template
+
+    attr_accessible :title, :slug, :body, :parent_id, :skip, :menu, :redirect, :meta_title, :meta_keywords, :meta_description
     
     #####
     ## Admin - Functions
@@ -86,7 +86,7 @@ module ActiveCms
     # return extern link to page
     def link
       self.redirect unless self.redirect.nil?
-      ('/'+self.slug).gsub('//', '/')+'.shtml'
+      ('/'+self.slug).gsub('//', '/')
     end
  
   end
